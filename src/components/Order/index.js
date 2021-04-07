@@ -7,7 +7,7 @@ function Order({newOrder}) {
   const arr = [];
   const verifyLi = (article_id) => {
     const arrId = arr.find(item => item === article_id);
-    if (arrId == article_id) {
+    if (arrId === article_id) {
       return true;
     }
     else return false;
@@ -36,16 +36,16 @@ function Order({newOrder}) {
             if ( verifyLi(article.id) === false ) {
               arr.push(article.id || null);
               return (
-                <li key={key} className="article">
+                <li className="article" key={key}>
                   <span>{article.label}-{article.name}</span>
                   <span>
                     X{article.nombre * articleNbr}
                   </span>
                   <span>
-                    {article.price}
+                    {article.price}€
                   </span>
                   <span>
-                    {article.price * articleNbr}
+                    {article.price * articleNbr}€
                   </span>
                 </li>
               )
