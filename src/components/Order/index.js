@@ -1,9 +1,9 @@
 import React from 'react';
 // import {Link} from 'react-router-dom';
-
+import arrow from './../../assets/imgaes/left-arrow.svg';
 import './style.scss';
 
-function Order({newOrder}) {
+function Order({newOrder, customer, activeCustomer, isActive}) {
   const arr = [];
   const verifyLi = (article_id) => {
     const arrId = arr.find(item => item === article_id);
@@ -23,38 +23,88 @@ function Order({newOrder}) {
 
   return (
     <main>
-      <ul className="wrapper order">
-        <li className="firstRow rows">
-          <span>Nom</span>
-          <span>Quantité</span>
-          <span>prix</span>
-          <span>total</span>
-        </li>
-        {
-          newOrder.map((article, key) => {
-            const articleNbr = newOrder.filter(item => item.id === article.id).length;
-            if ( verifyLi(article.id) === false ) {
-              arr.push(article.id || null);
-              return (
-                <li className="article" key={key}>
-                  <span>{article.label}-{article.name}</span>
-                  <span>
-                    X{article.nombre * articleNbr}
-                  </span>
-                  <span>
-                    {article.price}€
-                  </span>
-                  <span>
-                    {article.price * articleNbr}€
-                  </span>
-                </li>
-              )
-            }
-          })
-        }
-      </ul>
-      <div>
-        total : {resultCheck(newOrder)}€
+      <div className="wrapper order">
+        <button className="btn-customer" onClick={activeCustomer}>
+          <img src={arrow} alt="arrow" className={isActive ? 'img-btn' : 'img-btn active'} />
+          <h2>CLENT</h2>
+        </button>
+        <div className={isActive ? 'order_customer' : 'order_customer active'} >
+          <span className="order_text">
+            {customer ? 'Benjamin' : 'Nom'}
+          </span>
+          <span className="order_text">
+          {customer ? 'Guelle' : 'Prénom'}
+          </span>
+          <span className="order_text">
+          {customer ? 'Mon adresse' : 'Adresse'}
+          </span>
+        </div>
+        <ul className={isActive ? 'ordered' : 'ordered active'}>
+          <h2>COMMANDE</h2>
+          <li className="first-row">
+            <div className="first-item title">
+              <span>
+                Nom
+              </span>
+            </div>
+            <div className="first-item">
+              <span>
+                Quantité
+              </span>
+            </div>
+            <div className="first-item">
+              <span>
+                prix
+              </span>
+            </div>
+            <div className="first-item">
+              <span>
+                total
+              </span>
+            </div>
+          </li>
+          <ul className="list-order">
+          {
+            newOrder.map((article, key) => {
+              const articleNbr = newOrder.filter(item => item.id === article.id).length;
+              if ( verifyLi(article.id) === false ) {
+                arr.push(article.id || null);
+                return (
+                  <li className="article" key={key}>
+                    <div className="box title">
+                      <span>{article.label}</span>
+                      <span>{article.name}</span>
+                    </div>
+                    <div className="box quantity">
+                      <span>
+                        X{article.nombre * articleNbr}
+                      </span>
+                    </div>
+                    <div className="box price_u">
+                      <span>
+                        {article.price}€
+                      </span>
+                    </div>
+                    <div className="box price_t">
+                      <span>
+                        {article.price * articleNbr}€
+                      </span>
+                    </div>
+                  </li>
+                )
+              }
+            })
+          }
+          </ul>
+        </ul>
+        <div className="order-result">
+          <span>
+            total : 
+          </span>
+          <span>
+            {resultCheck(newOrder)}€
+          </span> 
+        </div>
       </div>
     </main>
   );

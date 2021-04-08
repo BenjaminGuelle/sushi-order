@@ -6,7 +6,7 @@ header {
     top: 0;
     left: 0;
     z-index: 1;
-    background-color: #566573;
+    background-color: $second-color;
     width: 100%;
     height: 120px;
     display: flex;
@@ -18,7 +18,7 @@ header {
 header .title {
     display: flex;
     align-items: center;
-    color: #F4F4F4;
+    color: $prim-color;
 }
 
 header .title img {
@@ -32,13 +32,13 @@ header .nav-list {
     height: 50px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #AED6F1;
+    border-bottom: 1px solid $third-color;
 }
 
 header .nav-list .nav-item {
     position: relative;
     margin-right: 5px;
-    color: #F4F4F4;
+    color: $prim-color;
 }
 
 header .nav-list .nav-item::before {
@@ -48,8 +48,12 @@ header .nav-list .nav-item::before {
     left: 0;
     width: 100%;
     height: 5px;
-    background-color: #AED6F1;
+    background-color: $third-color;
     display: none;
+}
+
+header .nav-list .nav-item.selected {
+    color: $third-color;
 }
 
 header .nav-list .nav-item.selected::before {
@@ -62,7 +66,7 @@ header .filter-articles {
     display: flex;
     align-items: center;
     overflow-x: auto;
-    background-color: #566573;
+    background-color: $second-color;
 }
 
 header .filter-articles .btn-filter {
@@ -70,7 +74,7 @@ header .filter-articles .btn-filter {
     height: 50px;
     border: none;
     padding: 5px;
-    background-color: #566573;
-    color: #F4F4F4;
+    background-color: $second-color;
+    color: $prim-color;
 }
 

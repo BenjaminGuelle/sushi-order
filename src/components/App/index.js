@@ -16,6 +16,8 @@ const App = () => {
   const [articles, setArticles] = useState([]);
   const [categories, setCategories] = useState([]);
   const [newOrder, setNewOrder] = useState([]);
+  const [customer, setCustomer] = useState(false);
+  const [isActiveOrder, setIsActiveOrder] = useState(true);
 
   /**
    * get all categories
@@ -76,6 +78,11 @@ const App = () => {
     setNewOrder([...newOrder, article]);
   };
 
+  const handleActiveCustomer = () => {
+    setIsActiveOrder(!isActiveOrder);
+    console.log(isActiveOrder);
+  }
+
   // &&& USEEFFECT &&&
   useEffect(() => {
     fetchArticles();
@@ -95,7 +102,12 @@ const App = () => {
         <Articles sushi={articles} addArticleToOrder={addArticleToOrder} />
       </Route>
       <Route exact path="/commande">
-        <Order newOrder={newOrder} />
+        <Order
+          newOrder={newOrder}
+          customer={customer}
+          activeCustomer={handleActiveCustomer}
+          isActive={isActiveOrder}
+        />
       </Route>
     </div>
   );

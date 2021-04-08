@@ -2,8 +2,9 @@
 
 /* MAIN */
 main {
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 130px);
     margin-top: 130px;
     padding: 10px;
     padding-top: 0;
@@ -19,14 +20,14 @@ main .wrapper {
 main .wrapper .item {
     width: 100%;
     height: 40px;
-    border: 2px solid #AED6F1 ;
+    border: 2px solid $third-color ;
     border-radius: 5px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    background-color: #F4F4F4;
+    background-color: $prim-color;
 }
 
 main .wrapper .item span {
@@ -40,7 +41,7 @@ main .wrapper .item .item_buttons {
     justify-content: center;
     align-items: center;
     border: none;
-    background-color: #F4F4F4;
+    background-color: $prim-color;
 }
 
 main .wrapper .item .item_buttons img {

@@ -1,22 +1,173 @@
 @import '../../styles/index.scss';
 
 main .order {
-}
-
-main .order .firstRow {
     width: 100%;
-    height: 50px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
-main .order .article {
+/* BTN CUSTOMER */
+main .order .btn-customer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: $prim-color;
+    z-index: 1;
+    outline: none;
+}
+
+main .order .btn-customer h2 {
+    font-size: 1.2em;
+    font-weight: 700;
+    padding-left: 1em;
+    color: $third-color;
+}
+
+main .order .btn-customer .img-btn {
+    position: absolute;
+    top: 11px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    transform: rotate(-90deg);
+}
+
+main .order .btn-customer .img-btn.active {
+    transform: rotate(180deg);
+}
+
+/* CONTAINER CUSTOMER */
+main .order .order_customer {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-top: 1px solid $third-color;
+    transition: top 0.5s ease-in-out;
+}
+/* ANNIME CUSTOMER */
+main .order .order_customer.active {
+    top: -50px;
+    transition: top 0.5s ease-in-out;
+}
+
+main .order .order_customer .order_text {
     width: 100%;
     height: 30px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-} 
+    font-size: 0.8em;
+    font-weight: 400;
+}
+
+/* CONTAINER ORDER */
+main .order .ordered {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    padding-top: 10px;
+    border-top: 1px solid $third-color;
+    transition: top 0.5s ease-in-out;
+}
+/* ANNIME ORDER */
+main .order .ordered.active {
+    top: 50px;
+    transition: top 0.5s ease-in-out;
+}
+
+main .order .ordered h2 {
+    font-size: 1em;
+    font-weight: 700;
+    padding-bottom: 10px;
+    color: $third-color;
+}
+
+main .order .ordered .first-row {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid $third-color;
+    font-size: 0.8em;
+    font-weight: 400;
+    display: flex;
+}
+
+main .order .ordered .first-row .first-item {
+    width: calc(100% / 4);
+    display: flex;
+    justify-content: flex-end;
+}
+main .order .ordered .first-row .first-item.title {
+    width: 130px;
+    justify-content: flex-start;
+}
+
+main .order .ordered .list-order {
+    padding-top: 5px;
+    width: 100%;
+    height: 300px;
+    overflow-y: auto;
+}
+
+main .order .ordered .list-order .article {
+    width: 100%;
+    height: 40px;
+    font-size: 0.8em;
+    font-weight: 400;
+    display: flex;
+    padding: 3px 0;
+    border-bottom: 1px dashed $blue;
+}
+
+main .order .ordered .list-order .article .box {
+    width: calc(100% / 4);
+    height: 100%;
+    display: flex;
+}
+
+main .order .ordered .list-order .article .title span:first-child {
+    color: $blue;
+}
+
+main .order .ordered .list-order .article .title {
+    flex-direction: column;
+    width: 130px;
+}
+
+main .order .ordered .list-order .article .quantity, .price_u, .price_t {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* RESULT ORDER */
+main .order .order-result {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: $green;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $prim-color;
+    font-size: 1em;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+main .order .order-result span {
+    padding-right: 10px;
+}
