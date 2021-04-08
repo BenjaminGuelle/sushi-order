@@ -54,7 +54,7 @@ function Order({newOrder}) {
         }
       </ul>
       <div>
-        total : {resultCheck(newOrder)}
+        total : {resultCheck(newOrder)}€
       </div>
     </main>
   );

@@ -7,7 +7,9 @@ import {categoriesDatas} from '../../datas/categories';
 
 import Header from '../../components/Header';
 import Articles from '../../components/Articles';
+import Categories from '../../components/Categories';
 import Order from '../../components/Order';
+import Home from '../../components/Home';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -53,14 +55,16 @@ const App = () => {
    * @returns 
    */
   const filterArticles = (type) => {
-    console.log('CLICK FILTER');
-    console.log(type);
     setLoading(true);
     if ( type !== 'Tous') {
       const newArticleList = sushiDatas.filter(sushi => sushi.label === type);
       setArticles(newArticleList);
+      setLoading(false);
     }
-    else return fetchArticles();
+    else {
+      setLoading(false);
+      return fetchArticles()
+    };
   };
 
   /**
@@ -80,13 +84,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <Route path="/">
-        <Header filterByType={filterArticles} categories={categories} />
+      <Header filterByType={filterArticles} categories={categories} />
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/categories">
+        <Categories categories={categories} filterByType={filterArticles} />
       </Route>
       <Route exact path="/articles">
-        <Articles  sushi={articles} addArticleToOrder={addArticleToOrder} />
+        <Articles sushi={articles} addArticleToOrder={addArticleToOrder} />
       </Route>
-      <Route exact path="/commandes">
+      <Route exact path="/commande">
         <Order newOrder={newOrder} />
       </Route>
     </div>

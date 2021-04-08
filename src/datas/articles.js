@@ -579,8 +579,8 @@ export const sushiDatas = [
     {
         id: '74',
         label: 'Accompagnements',
-        name: 'Crevette tempoura',
-        price: 10.40,
+        name: 'Crevette tempura',
+        price: 5.50,
         nombre: 3,
         done: true,
     },

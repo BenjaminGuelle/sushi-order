@@ -6,16 +6,22 @@ import './style.scss';
 function Header({filterByType, categories}) {
   return (
     <header>
-        <div className="title">
+        <NavLink to="/" className="title">
           <img src={tuna} alt="logo-tuna"/>
           <span>Admin sushi</span>
-        </div>
+        </NavLink>
         <nav className="nav-list">
+            <NavLink to="/client" activeClassName="selected" className="nav-item">
+              Client
+            </NavLink>
+            <NavLink to="/categories" activeClassName="selected" className="nav-item">
+              Catégories
+            </NavLink>     
             <NavLink to="/articles" activeClassName="selected" className="nav-item">
               Articles
             </NavLink>
-            <NavLink to="/commandes" activeClassName="selected" className="nav-item">
-              Order
+            <NavLink to="/commande" activeClassName="selected" className="nav-item">
+              Commandes
             </NavLink>     
         </nav>
         <div className="filter-articles">
