@@ -155,8 +155,9 @@ main .order .order-result {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 250px;
     height: 50px;
+    z-index: 1;
     background-color: $green;
     border-radius: 5px;
     display: flex;
@@ -170,4 +171,24 @@ main .order .order-result {
 
 main .order .order-result span {
     padding-right: 10px;
+}
+
+/* RESET ORDER */
+main .order .order-trash {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    border-radius: 50%;
+    border: 3px solid $third-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
+main .order .order-trash img {
+    width: 30px;
 }

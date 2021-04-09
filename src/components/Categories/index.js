@@ -11,7 +11,7 @@ function Categories({categories, filterByType}) {
         {
           categories.map((categorieObj, key) => (
             <Link to="/articles" key={key} className="btn-type" onClick={() => (filterByType(categorieObj.label))}>
-              <img src={[categorieObj.picture]} />
+              <img src={[categorieObj.picture]} alt={categorieObj.label} />
               <span>
                 {categorieObj.label}
               </span>

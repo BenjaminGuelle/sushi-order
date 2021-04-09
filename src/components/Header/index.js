@@ -24,19 +24,6 @@ function Header({filterByType, categories}) {
               Commandes
             </NavLink>     
         </nav>
-        <div className="filter-articles">
-        {
-          categories.map((categoryObj) => (
-            <button key={categoryObj.id} className="btn-filter" onClick={
-              () => {
-                filterByType(categoryObj.label);
-              }
-            }>
-              {categoryObj.label}
-            </button>
-          ))
-        }        
-        </div>
     </header>
   );
 }

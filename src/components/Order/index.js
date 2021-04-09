@@ -1,9 +1,11 @@
 import React from 'react';
 // import {Link} from 'react-router-dom';
 import arrow from './../../assets/imgaes/left-arrow.svg';
+import trash from './../../assets/imgaes/trash.svg';
 import './style.scss';
 
-function Order({newOrder, customer, activeCustomer, isActive}) {
+function Order({newOrder, customer, activeCustomer, isActive, newCustomer, handleResetOrder}) {
+  const {firstName, lastName, adress} = newCustomer;
   const arr = [];
   const verifyLi = (article_id) => {
     const arrId = arr.find(item => item === article_id);
@@ -15,10 +17,14 @@ function Order({newOrder, customer, activeCustomer, isActive}) {
 
   const resultCheck = (newOrder) => {
     let total = 0;
-    for (let i = 0; i < newOrder.length; i++) {
-      total = total + newOrder[i].price;
+    if (newOrder != undefined) {
+      console.log(newOrder);
+      for (let i = 0; i < newOrder.length; i++) {
+        total = total + newOrder[i].price;
+      }
+      return total;
     }
-    return total;
+    else return 0; 
   }
 
   return (
@@ -30,13 +36,13 @@ function Order({newOrder, customer, activeCustomer, isActive}) {
         </button>
         <div className={isActive ? 'order_customer' : 'order_customer active'} >
           <span className="order_text">
-            {customer ? 'Benjamin' : 'Nom'}
+            {customer ? lastName : 'Nom'}
           </span>
           <span className="order_text">
-          {customer ? 'Guelle' : 'Prénom'}
+          {customer ? firstName : 'Prénom'}
           </span>
           <span className="order_text">
-          {customer ? 'Mon adresse' : 'Adresse'}
+          {customer ? adress : 'Adresse'}
           </span>
         </div>
         <ul className={isActive ? 'ordered' : 'ordered active'}>
@@ -105,6 +111,9 @@ function Order({newOrder, customer, activeCustomer, isActive}) {
             {resultCheck(newOrder)}€
           </span> 
         </div>
+        <button className="order-trash" onClick={handleResetOrder} >
+            <img src={trash} alt="trash" />
+        </button>
       </div>
     </main>
   );

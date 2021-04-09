@@ -10,6 +10,7 @@ import Articles from '../../components/Articles';
 import Categories from '../../components/Categories';
 import Order from '../../components/Order';
 import Home from '../../components/Home';
+import Customer from '../../components/Customer';
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,13 @@ const App = () => {
   const [categories, setCategories] = useState([]);
   const [newOrder, setNewOrder] = useState([]);
   const [customer, setCustomer] = useState(false);
+  const [newCustomer, setNewCustomer] = useState({
+    firstName: '',
+    lastName: '',
+    adress: '',
+  });
   const [isActiveOrder, setIsActiveOrder] = useState(true);
+
 
   /**
    * get all categories
@@ -81,6 +88,29 @@ const App = () => {
   const handleActiveCustomer = () => {
     setIsActiveOrder(!isActiveOrder);
     console.log(isActiveOrder);
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setNewCustomer({
+      ...newCustomer,
+      [e.target.name]: value,
+    });
+    console.log(newCustomer);
+  };
+
+  const handleSendForm = () => {
+    setCustomer(true);
+  };
+
+  const handleResetOrder = () => {
+    setNewCustomer({
+      firstName: '',
+      lastName: '',
+      adress: '',
+    });
+    setNewOrder([]);
+    setCustomer(false);
   }
 
   // &&& USEEFFECT &&&
@@ -105,8 +135,17 @@ const App = () => {
         <Order
           newOrder={newOrder}
           customer={customer}
+          newCustomer={newCustomer}
           activeCustomer={handleActiveCustomer}
           isActive={isActiveOrder}
+          handleResetOrder={handleResetOrder}
+        />
+      </Route>
+      <Route exact path="/client">
+        <Customer
+          newCustomer={newCustomer}
+          onInputChange={handleInputChange}
+          handleSendForm={handleSendForm}
         />
       </Route>
     </div>
